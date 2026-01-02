@@ -16,12 +16,23 @@ export class AppComponent {
   /* 1. Create a simple linked signal that sets the selected product to the first
         product in the list., wheven the inventory changes */
 
-  /* 2. Change the `linkedSignal` so you use the second signature, supply an object 
-        with source and computation properties */
+  /* 2. Change the `linkedSignal` so you use the second signature, supply an object
+ with source and computation properties */
 
   /* 3. In the computation, use the previous value, to check if the selected product
         is still in the list, if not, set the selected product to the first product in the list */
 
+  readonly linkedSelectedProduct = linkedSignal< string[], string>({
+    source: this.products,
+    computation: (products, previous) => {
+      if (previous?.value && products.includes(previous.value)) {
+        return previous.value;
+      }
+      return products[0];
+    }
+  });
+
+ 
 
   addProduct() {
     this.products.update(prods => [...prods, PRODUCTS[prods.length]]);
@@ -32,14 +43,14 @@ export class AppComponent {
   }
 
   nextProduct() {
-    this.selectedProduct.update(selected => {
+    this.linkedSelectedProduct.update(selected => {
       const index = this.products().indexOf(selected);
       return this.products()[(index + 1) % this.products().length];
     });
   }
 
   prevProduct() {
-    this.selectedProduct.update(selected => {
+    this.linkedSelectedProduct.update(selected => {
       const index = this.products().indexOf(selected);
       return this.products()[(index - 1 + this.products().length) % this.products().length];
     });

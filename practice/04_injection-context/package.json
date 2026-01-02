@@ -1,5 +1,5 @@
 {
-  "name": "change-detaction",
+  "name": "injection-context",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

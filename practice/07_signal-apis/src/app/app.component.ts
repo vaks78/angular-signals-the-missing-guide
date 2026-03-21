@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RATES } from './component/currency-converter/rates';
 import { CurrencyConverterComponent } from "./component/currency-converter/currency-converter.component";
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -7,7 +7,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   selector: 'app-root',
   standalone: true,
   imports: [CurrencyConverterComponent, ReactiveFormsModule],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

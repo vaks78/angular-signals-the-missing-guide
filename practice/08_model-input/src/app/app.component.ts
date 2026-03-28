@@ -8,7 +8,7 @@ import { OptionSelectorComponent } from "./components/option-selector/option-sel
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CurrencyConverterComponent, ReactiveFormsModule, OptionSelectorComponent],
+  imports: [CurrencyConverterComponent, ReactiveFormsModule, OptionSelectorComponent],
   // changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -39,6 +39,10 @@ export class AppComponent {
 
   refreshData() {
     console.log('refreshData');
+  }
+
+  onCurrencySelected(currency: string) {
+    this.currency.set(currency);
   }
 
 }

@@ -5,7 +5,7 @@
 <label>Currency</label>
 
 <!---->
-<app-option-selector [options]="currencies" />
+<app-option-selector [options]="currencies" (selectedCurrency)="onCurrencySelected($event)" />
 <!---->
 
 <app-currency-converter

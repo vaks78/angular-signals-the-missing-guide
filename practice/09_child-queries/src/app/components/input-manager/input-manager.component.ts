@@ -11,9 +11,11 @@ import { ManagedInputDirective } from './managed-input.directive';
 export class InputManagerComponent {
 
   // add a proper content query (hint, use the ManagedInputDirective)
-
+  readonly managedInputDirectives = contentChildren(ManagedInputDirective);
+  
   clearAll() {
     // use the content query to clear all inputs
+    this.managedInputDirectives().forEach(managedInputDirective => managedInputDirective.inputElement.value = '');
   }
 
 }

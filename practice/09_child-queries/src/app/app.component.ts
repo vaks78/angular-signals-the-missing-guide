@@ -13,10 +13,14 @@ import { ManagedInputDirective } from './components/input-manager/managed-input.
 export class AppComponent {
 
   // add a proper view query (hint, use the # reference string)
+  readonly txtInput = viewChild.required('txtInput', { read: ElementRef<HTMLInputElement> });
 
   onSelect() {
     // use the view query to select the input
     // hint, use the 'select' method on the native element
+    const inputElement = this.txtInput().nativeElement;
+    inputElement.select();
+    console.log(inputElement.value);
   }
 
 }

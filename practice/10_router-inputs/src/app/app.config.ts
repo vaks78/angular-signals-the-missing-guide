@@ -6,5 +6,5 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
-    provideRouter(routes, /* Add the component input binding feature here */)]
+    provideRouter(routes, withComponentInputBinding() /* Add the component input binding feature here */)] 
 };

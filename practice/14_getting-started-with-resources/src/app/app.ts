@@ -10,11 +10,17 @@ import { Api } from './services/api';
 export class App {
   readonly api = inject(Api);
 
-  readonly apiNumber = null;
+
+  readonly apiNumber = resource(({
+    loader: (options) => this.api.getRandomNumberAsync(options.abortSignal),
+    defaultValue: -1,
+    }));
 
   reloadNumber() {
+    this.apiNumber.reload();
   }
 
   setLocalValue(val: number) {
+    this.apiNumber.set(val);
   }
 }

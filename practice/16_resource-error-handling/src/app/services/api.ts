@@ -31,10 +31,10 @@ export class Api {
     return new Promise<number>((resolve, reject) => {
       let handle: number | null = null;
       handle = setTimeout(() => {        
-        const res = value * 5;
         if (value === 57) {
           reject('I dont like the number 57');
         } else {
+          const res = value * 5;
           console.log('[API] Multiplier received', res);
           resolve(res);
         }
